@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
 
 const App = () => {
   const iniciarCamara = () => {
@@ -10,8 +10,8 @@ const App = () => {
     <View style={styles.container}>
       {/* Encabezado */}
       <View style={styles.header}>
-        <Image source={require('./assets/icon.png')} style={styles.logo} />
-        <Text style={styles.headerText}>Nombre del Proyecto</Text>
+        <Image source={require('./assets/LogoLSM.png')} style={styles.logo} />
+        <Text style={styles.headerText}>Traductor de LSM en videollamada</Text>
       </View>
 
       {/* Contenido principal */}
@@ -19,10 +19,14 @@ const App = () => {
         <Text style={styles.welcome}>¡Bienvenido a la aplicación de VideoCall!</Text>
         <Text style={styles.instructions}>Próximamente podrás iniciar videollamadas aquí.</Text>
       
-        <Button
-          title="Iniciar cámara"
-          onPress={iniciarCamara} // Llama la función cuando se presiona el botón
-        />
+        <TouchableOpacity style={styles.button} onPress={iniciarCamara}>
+          <Text style={styles.buttonText}>Iniciar cámara</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Pie de página */}
+      <View style={styles.footer}>
+        <Text>© 2024 Traductor de LSM. Todos los derechos reservados.</Text>
       </View>
     </View>
   );
@@ -31,25 +35,33 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#e0f7fa',
   },
   header: {
     width: '100%',
-    height: 150, // Ajusta la altura del encabezado
-    backgroundColor: '#ADD8E6', // Color azul claro
-    flexDirection: 'row', // Cambia la dirección a fila para alinear la imagen y el texto horizontalmente
-    alignItems: 'center', // Centra verticalmente los elementos
-    padding: 10, // Añade algo de espacio interno
+    height: 120,
+    backgroundColor: '#23b5d3',
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 15,
     position: 'absolute',
     top: 0,
+    shadowColor: '#000', 
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
   },
   logo: {
-    width: 50, // Ancho de la imagen
-    height: 50, // Alto de la imagen
-    marginRight: 10, // Espacio a la derecha de la imagen
+    width: 50,
+    height: 50,
+    marginRight: 8,
   },
   headerText: {
-    fontSize: 18,
+    fontSize: 20, // Aumentar el tamaño del texto
     fontWeight: 'bold',
     color: '#fff',
   },
@@ -57,17 +69,35 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 150, // Empuja el contenido hacia abajo para que no quede detrás del encabezado
+    marginTop: 150,
   },
   welcome: {
-    fontSize: 24,
+    fontSize: 30, // Aumentar el tamaño del texto
     fontWeight: 'bold',
+    color: '#00796b',
     marginBottom: 20,
   },
   instructions: {
-    fontSize: 16,
+    fontSize: 18, // Aumentar el tamaño del texto
     color: '#333',
     marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#ff5722',
+    padding: 15, // Aumentar el padding
+    borderRadius: 10, // Esquinas más redondeadas
+    marginVertical: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 20, // Aumentar el tamaño del texto del botón
+    textAlign: 'center',
+  },
+  footer: {
+    position: 'absolute',
+    bottom: 10,
+    width: '100%',
+    alignItems: 'center',
   },
 });
 
