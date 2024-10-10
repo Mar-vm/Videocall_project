@@ -1,9 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CameraScreen from './screens/CameraScreen'; // Asegúrate de que esta ruta sea correcta
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Camera" component={CameraScreen} options={{ title: 'Cámara' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+const HomeScreen = ({ navigation }) => {
   const iniciarCamara = () => {
-    Alert.alert("Cámara", "La funcionalidad de la cámara se activará aquí.");
+    navigation.navigate('Camera'); // Navega a la pantalla de la cámara
   };
 
   return (
@@ -26,7 +42,7 @@ const App = () => {
 
       {/* Pie de página */}
       <View style={styles.footer}>
-        <Text>© 2024 Traductor de LSM. Todos los derechos reservados.</Text>
+        <Text>© 2024 Traductor de LSM. Todos los derechos reservados a garzita.</Text>
       </View>
     </View>
   );
@@ -46,7 +62,7 @@ const styles = StyleSheet.create({
     padding: 15,
     position: 'absolute',
     top: 0,
-    shadowColor: '#000', 
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
