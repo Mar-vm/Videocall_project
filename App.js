@@ -42,7 +42,7 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Pie de página */}
       <View style={styles.footer}>
-        <Text>© 2024 Traductor de LSM. Todos los derechos reservados a garzita.</Text>
+        <Text>© 2024 Traductor de LSM. Todos los derechos reservados a el profe.</Text>
       </View>
     </View>
   );
