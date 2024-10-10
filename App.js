@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CameraScreen from './screens/CameraScreen'; // Asegúrate de que esta ruta sea correcta
+import CameraScreen from './Screens/camera'; // Asegúrate de que este sea el nombre correcto y la ruta
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Camera" component={CameraScreen} options={{ title: 'Cámara' }} />
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Camera" component={CameraScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -19,7 +19,7 @@ const App = () => {
 
 const HomeScreen = ({ navigation }) => {
   const iniciarCamara = () => {
-    navigation.navigate('Camera'); // Navega a la pantalla de la cámara
+    navigation.navigate('Camera');
   };
 
   return (
@@ -34,7 +34,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.content}>
         <Text style={styles.welcome}>¡Bienvenido a la aplicación de VideoCall!</Text>
         <Text style={styles.instructions}>Próximamente podrás iniciar videollamadas aquí.</Text>
-      
+        
         <TouchableOpacity style={styles.button} onPress={iniciarCamara}>
           <Text style={styles.buttonText}>Iniciar cámara</Text>
         </TouchableOpacity>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   headerText: {
-    fontSize: 20, // Aumentar el tamaño del texto
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
   },
@@ -88,25 +88,25 @@ const styles = StyleSheet.create({
     marginTop: 150,
   },
   welcome: {
-    fontSize: 30, // Aumentar el tamaño del texto
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#00796b',
     marginBottom: 20,
   },
   instructions: {
-    fontSize: 18, // Aumentar el tamaño del texto
+    fontSize: 18,
     color: '#333',
     marginBottom: 20,
   },
   button: {
     backgroundColor: '#ff5722',
-    padding: 15, // Aumentar el padding
-    borderRadius: 10, // Esquinas más redondeadas
+    padding: 15,
+    borderRadius: 10,
     marginVertical: 10,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 20, // Aumentar el tamaño del texto del botón
+    fontSize: 20,
     textAlign: 'center',
   },
   footer: {

@@ -1,10 +1,20 @@
+// Screens/camera.js
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import { RNCamera } from 'react-native-camera';
 
 const CameraScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Aquí estará la cámara en grande.</Text>
+      <RNCamera
+        style={styles.camera}
+        type={RNCamera.Constants.Type.back} // Tipo de cámara (frontal o trasera)
+        flashMode={RNCamera.Constants.FlashMode.on} // O puedes cambiar a 'off' o 'auto'
+      >
+        <View style={styles.overlay}>
+          <Text style={styles.text}>Cámara Activa</Text>
+        </View>
+      </RNCamera>
     </View>
   );
 };
@@ -12,13 +22,22 @@ const CameraScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  camera: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  overlay: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
   },
   text: {
     fontSize: 24,
-    fontWeight: 'bold',
+    color: '#fff',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 10,
   },
 });
 
