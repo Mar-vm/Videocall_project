@@ -1,13 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import HomeScreen from './Screens/HomeScreen'; // Importa la pantalla HomeScreen
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <HomeScreen />; // Renderiza la pantalla HomeScreen
 }
 
 const styles = StyleSheet.create({
@@ -18,3 +13,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
