@@ -1,8 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CameraScreen from './screens/CameraScreen'; // Asegúrate de que esta ruta sea correcta
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -10,6 +12,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Camera" component={CameraScreen} options={{ title: 'Cámara' }} />
       </Stack.Navigator>
@@ -18,8 +22,12 @@ const App = () => {
 };
 
 const HomeScreen = ({ navigation }) => {
-  const iniciarCamara = () => {
-    navigation.navigate('Camera'); // Navega a la pantalla de la cámara
+  const goToLogin = () => {
+    navigation.navigate('Login');
+  };
+
+  const goToRegister = () => {
+    navigation.navigate('Register');
   };
 
   return (
@@ -35,8 +43,12 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.welcome}>¡Bienvenido a la aplicación de VideoCall!</Text>
         <Text style={styles.instructions}>Próximamente podrás iniciar videollamadas aquí</Text>
       
-        <TouchableOpacity style={styles.button} onPress={iniciarCamara}>
-          <Text style={styles.buttonText}>Iniciar cámara</Text>
+        <TouchableOpacity style={styles.button} onPress={goToLogin}>
+          <Text style={styles.buttonText}>Iniciar Sesión</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={goToRegister}>
+          <Text style={styles.buttonText}>Registrarse</Text>
         </TouchableOpacity>
       </View>
 
@@ -77,7 +89,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   headerText: {
-    fontSize: 20, // Aumentar el tamaño del texto
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
   },
@@ -88,26 +100,27 @@ const styles = StyleSheet.create({
     marginTop: 150,
   },
   welcome: {
-    fontSize: 30, // Aumentar el tamaño del texto
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#00796b',
     marginBottom: 20,
   },
   instructions: {
-    fontSize: 18, // Aumentar el tamaño del texto
+    fontSize: 18,
     color: '#333',
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#ff5722',
-    padding: 15, // Aumentar el padding
-    borderRadius: 10, // Esquinas más redondeadas
+    backgroundColor: '#0056B3',
+    padding: 15,
+    borderRadius: 10,
     marginVertical: 10,
+    width: '80%',
+    alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
-    fontSize: 20, // Aumentar el tamaño del texto del botón
-    textAlign: 'center',
+    fontSize: 18,
   },
   footer: {
     position: 'absolute',
