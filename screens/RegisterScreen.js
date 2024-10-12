@@ -1,35 +1,52 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const goToHome = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Registrarse</Text>
-      
-      <TextInput
-        placeholder="Nombre"
-        placeholderTextColor="#212529"
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Correo electrónico"
-        placeholderTextColor="#212529"
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Contraseña"
-        placeholderTextColor="#212529"
-        style={styles.input}
-        secureTextEntry
-      />
+      <View style={styles.header}>
+        <Image source={require('./../assets/LogoLSM.png')} style={styles.logo} />
+        <Text style={styles.headerText}>Registrarse</Text>
+      </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
-        <Text style={styles.buttonText}>Registrarse</Text>
-      </TouchableOpacity>
+      <View style={styles.content}>
+        <TextInput
+          style={styles.input}
+          placeholder="Correo electrónico"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Contraseña"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Confirmar Contraseña"
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+          secureTextEntry
+        />
+        
+        <TouchableOpacity style={styles.button} onPress={goToHome}>
+          <Text style={styles.buttonText}>Registrarse</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.loginText}>¿Ya tienes cuenta? Inicia sesión</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.linkText}>¿Ya tienes una cuenta? Inicia sesión aquí</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -37,41 +54,61 @@ const RegisterScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+  },
+  header: {
+    width: '100%',
+    alignItems: 'center',
+    padding: 15,
+    backgroundColor: '#007BFF',
+    position: 'absolute',
+    top: 0,
+    paddingTop: 40,
+    paddingBottom: 20,
+  },
+  logo: {
+    width: 80,
+    height: 80,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    marginTop: 10,
+  },
+  content: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-  },
-  title: {
-    fontSize: 24,
-    color: '#212529',
-    marginBottom: 20,
+    marginTop: 100,
+    width: '80%', // Limitar el ancho de los elementos
   },
   input: {
-    width: '80%',
     height: 50,
     borderColor: '#007BFF',
     borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-    backgroundColor: '#FFFFFF',
-    color: '#212529',
+    borderRadius: 5,
+    paddingLeft: 10,
+    marginBottom: 15,
+    width: '100%', // Hacer que el campo de entrada ocupe el ancho completo
   },
   button: {
     backgroundColor: '#0056B3',
     padding: 15,
     borderRadius: 10,
-    width: '80%',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   buttonText: {
     color: '#FFFFFF',
     fontSize: 18,
   },
-  loginText: {
-    color: '#007BFF',
-    marginTop: 20,
+  linkText: {
+    fontSize: 16,
+    color: '#212529',
+    marginTop: 10,
+    textDecorationLine: 'underline',
   },
 });
 
