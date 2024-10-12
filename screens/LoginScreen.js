@@ -1,44 +1,23 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const goToHome = () => {
-    navigation.navigate('Home');
+  const irARegistrar = () => {
+    navigation.navigate('Register'); // Navega a la pantalla de registro
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image source={require('./../assets/LogoLSM.png')} style={styles.logo} />
-        <Text style={styles.headerText}>Iniciar Sesión</Text>
-      </View>
-
-      <View style={styles.content}>
-        <TextInput
-          style={styles.input}
-          placeholder="Correo electrónico"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Contraseña"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        
-        <TouchableOpacity style={styles.button} onPress={goToHome}>
-          <Text style={styles.buttonText}>Acceder</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.linkText}>¿No tienes una cuenta? Regístrate aquí</Text>
-        </TouchableOpacity>
-      </View>
+      <Image source={require('../assets/LogoLSM.png')} style={styles.logo} />
+      <Text style={styles.prompt}>¿No tienes cuenta? Regístrate aquí.</Text>
+      <TextInput style={styles.input} placeholder="Correo electrónico" />
+      <TextInput style={styles.input} placeholder="Contraseña" secureTextEntry />
+      <TouchableOpacity style={styles.button} onPress={() => {/* Lógica de inicio de sesión */}}>
+        <Text style={styles.buttonText}>Iniciar Sesión</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={irARegistrar}>
+        <Text style={styles.linkText}>¿Eres nuevo? Regístrate</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -46,61 +25,45 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-  },
-  header: {
-    width: '100%',
-    alignItems: 'center',
-    padding: 15,
-    backgroundColor: '#007BFF',
-    position: 'absolute',
-    top: 0,
-    paddingTop: 40,
-    paddingBottom: 20,
-  },
-  logo: {
-    width: 80,
-    height: 80,
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginTop: 10,
-  },
-  content: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100,
-    width: '80%', // Limitar el ancho de los elementos
+    backgroundColor: '#FFFFFF',
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+    marginTop: 40, 
+  },
+  prompt: {
+    fontSize: 18,
+    marginBottom: 20,
   },
   input: {
     height: 50,
+    width: '80%',
     borderColor: '#007BFF',
     borderWidth: 1,
-    borderRadius: 5,
-    paddingLeft: 10,
+    borderRadius: 10,
+    padding: 10,
     marginBottom: 15,
-    width: '100%', // Hacer que el campo de entrada ocupe el ancho completo
   },
   button: {
     backgroundColor: '#0056B3',
     padding: 15,
     borderRadius: 10,
-    alignItems: 'center',
-    marginBottom: 10,
+    marginVertical: 10,
+    width: '80%',
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 20,
+    textAlign: 'center',
   },
   linkText: {
+    color: '#007BFF',
     fontSize: 16,
-    color: '#212529',
-    marginTop: 10,
-    textDecorationLine: 'underline',
+    marginVertical: 10,
   },
 });
 

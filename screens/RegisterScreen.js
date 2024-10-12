@@ -1,52 +1,59 @@
+// RegisterScreen.js
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const [telefono, setTelefono] = useState(''); // Estado para el número de teléfono
 
-  const goToHome = () => {
-    navigation.navigate('Home');
+  const handleRegister = () => {
+    // Lógica para manejar el registro
+    console.log('Registro exitoso:', { nombre, correo, contrasena, telefono });
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image source={require('./../assets/LogoLSM.png')} style={styles.logo} />
-        <Text style={styles.headerText}>Registrarse</Text>
-      </View>
-
-      <View style={styles.content}>
-        <TextInput
-          style={styles.input}
-          placeholder="Correo electrónico"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Contraseña"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Confirmar Contraseña"
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-          secureTextEntry
-        />
-        
-        <TouchableOpacity style={styles.button} onPress={goToHome}>
-          <Text style={styles.buttonText}>Registrarse</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.linkText}>¿Ya tienes una cuenta? Inicia sesión aquí</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.title}>Registrarse</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Nombre"
+        value={nombre}
+        onChangeText={setNombre}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Correo Electrónico"
+        value={correo}
+        onChangeText={setCorreo}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Contraseña"
+        secureTextEntry
+        value={contrasena}
+        onChangeText={setContrasena}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Número de Teléfono" // Placeholder para el número de teléfono
+        value={telefono}
+        onChangeText={setTelefono}
+        keyboardType="phone-pad" // Tipo de teclado para el número de teléfono
+      />
+      <TouchableOpacity style={styles.button} onPress={handleRegister}>
+        <Text style={styles.buttonText}>Registrarse</Text>
+      </TouchableOpacity>
+      <Text style={styles.footerText}>
+        ¿Ya tienes cuenta?{' '}
+        <Text 
+          style={styles.linkText} 
+          onPress={() => navigation.navigate('Login')} // Navegar a la pantalla de inicio de sesión
+        >
+          Inicia sesión.
+        </Text>
+      </Text>
     </View>
   );
 };
@@ -54,61 +61,44 @@ const RegisterScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-  },
-  header: {
-    width: '100%',
-    alignItems: 'center',
-    padding: 15,
-    backgroundColor: '#007BFF',
-    position: 'absolute',
-    top: 0,
-    paddingTop: 40,
-    paddingBottom: 20,
-  },
-  logo: {
-    width: 80,
-    height: 80,
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginTop: 10,
-  },
-  content: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100,
-    width: '80%', // Limitar el ancho de los elementos
+    backgroundColor: '#FFFFFF',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
   input: {
+    width: '100%',
     height: 50,
     borderColor: '#007BFF',
     borderWidth: 1,
-    borderRadius: 5,
-    paddingLeft: 10,
+    borderRadius: 10,
     marginBottom: 15,
-    width: '100%', // Hacer que el campo de entrada ocupe el ancho completo
+    paddingHorizontal: 10,
   },
   button: {
     backgroundColor: '#0056B3',
     padding: 15,
     borderRadius: 10,
+    width: '100%',
     alignItems: 'center',
-    marginBottom: 10,
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 20,
+  },
+  footerText: {
+    fontSize: 16,
+    marginTop: 20,
+    color: '#333',
   },
   linkText: {
-    fontSize: 16,
-    color: '#212529',
-    marginTop: 10,
-    textDecorationLine: 'underline',
+    color: '#007BFF',
+    fontWeight: 'bold',
   },
 });
 
