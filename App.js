@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
       {/* Contenido principal */}
       <View style={styles.content}>
         <Text style={styles.welcome}>¡Bienvenido a la aplicación de VideoCall!</Text>
-        <Text style={styles.instructions}>Próximamente podrás iniciar videollamadas aquí.</Text>
+        <Text style={styles.instructions}>Próximamente podrás iniciar videollamadas aquí</Text>
       
         <TouchableOpacity style={styles.button} onPress={iniciarCamara}>
           <Text style={styles.buttonText}>Iniciar cámara</Text>
