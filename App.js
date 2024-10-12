@@ -22,6 +22,10 @@ const App = () => {
 };
 
 const HomeScreen = ({ navigation }) => {
+  const iniciarCamara = () => {
+    navigation.navigate('Camera'); // Navega a la pantalla de la cámara
+  };
+
   const goToLogin = () => {
     navigation.navigate('Login');
   };
@@ -43,12 +47,18 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.welcome}>¡Bienvenido a la aplicación de VideoCall!</Text>
         <Text style={styles.instructions}>Próximamente podrás iniciar videollamadas aquí</Text>
       
-        <TouchableOpacity style={styles.button} onPress={goToLogin}>
-          <Text style={styles.buttonText}>Iniciar Sesión</Text>
+        {/* Botón para iniciar la cámara */}
+        <TouchableOpacity style={styles.button} onPress={iniciarCamara}>
+          <Text style={styles.buttonText}>Iniciar cámara</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={goToRegister}>
-          <Text style={styles.buttonText}>Registrarse</Text>
+        {/* Enlaces minimalistas para Iniciar Sesión y Registrarse */}
+        <TouchableOpacity onPress={goToLogin}>
+          <Text style={styles.linkText}>Iniciar Sesión</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={goToRegister}>
+          <Text style={styles.linkText}>Registrarse</Text>
         </TouchableOpacity>
       </View>
 
@@ -63,12 +73,12 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e0f7fa',
+    backgroundColor: '#FFFFFF', // Fondo blanco como solicitaste
   },
   header: {
     width: '100%',
     height: 120,
-    backgroundColor: '#23b5d3',
+    backgroundColor: '#007BFF', // Color primario
     flexDirection: 'row',
     alignItems: 'center',
     padding: 15,
@@ -91,7 +101,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#FFFFFF', // Texto en blanco
   },
   content: {
     flex: 1,
@@ -107,11 +117,11 @@ const styles = StyleSheet.create({
   },
   instructions: {
     fontSize: 18,
-    color: '#333',
+    color: '#333333',
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#0056B3',
+    backgroundColor: '#0056B3', // Color del botón
     padding: 15,
     borderRadius: 10,
     marginVertical: 10,
@@ -119,8 +129,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 18,
+  },
+  linkText: {
+    fontSize: 16,
+    color: '#212529', // Color del texto de los enlaces (minimalista)
+    marginTop: 10,
+    textDecorationLine: 'underline', // Para darle el aspecto de enlace
   },
   footer: {
     position: 'absolute',
