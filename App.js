@@ -27,7 +27,7 @@ const HomeScreen = ({ navigation }) => {
       {/* Encabezado */}
       <View style={styles.header}>
         <Image source={require('./assets/LogoLSM.png')} style={styles.logo} />
-        <Text style={styles.headerText}>Traductor de LSM en videollamada</Text>
+        <Text style={styles.headerText}>Traductor de LSM en tiempo real en videollamada</Text>
       </View>
 
       {/* Contenido principal */}
