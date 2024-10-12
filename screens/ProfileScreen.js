@@ -1,15 +1,22 @@
-// screens/ProfileScreen.js
+// ProfileScreen.js
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 const ProfileScreen = () => {
+  // Aquí puedes definir los datos del usuario. Por ahora, usaré valores estáticos.
+  const userData = {
+    nombre: 'Juan Pérez',
+    correo: 'juan.perez@example.com',
+    telefono: '123-456-7890',
+    fotoPerfil: require('../assets/miau.png'), // Ruta corregida a la imagen de perfil
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Información de Usuario</Text>
-      {/* Aquí puedes mostrar la información personal del usuario */}
-      <Text>Nombre: Usuario Ejemplo</Text>
-      <Text>Correo: usuario@ejemplo.com</Text>
-      {/* Puedes agregar más campos según sea necesario */}
+      <Image source={userData.fotoPerfil} style={styles.profileImage} />
+      <Text style={styles.name}>{userData.nombre}</Text>
+      <Text style={styles.info}>Correo: {userData.correo}</Text>
+      <Text style={styles.info}>Teléfono: {userData.telefono}</Text>
     </View>
   );
 };
@@ -20,12 +27,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
+    padding: 20,
   },
-  title: {
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50, // Hace que la imagen sea circular
+    marginBottom: 20,
+  },
+  name: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
-    marginTop: 40, 
+    marginBottom: 10,
+  },
+  info: {
+    fontSize: 16,
+    color: '#333',
+    marginBottom: 5,
   },
 });
 
