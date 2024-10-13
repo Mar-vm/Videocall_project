@@ -1,16 +1,12 @@
 import React from 'react';
-import HomeScreen from './Screens/HomeScreen'; // Importa la pantalla HomeScreen
+import { View, StatusBar } from 'react-native';
+import CallScreen from './screens/VideoCallScreen';
 
 export default function App() {
-  return <HomeScreen />; // Renderiza la pantalla HomeScreen
+  return (
+    <View style={{ flex: 1 }}>
+      <StatusBar barStyle="light-content" />
+      <CallScreen />
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
