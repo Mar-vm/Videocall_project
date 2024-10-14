@@ -40,7 +40,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('./assets/LogoLSM.png')} style={styles.logo} />
+        <Image source={require('./assets/Enlaza.png')} style={styles.logo} />
         <Text style={styles.headerText}>Traductor de LSM en videollamada</Text>
         <TouchableOpacity style={styles.profileIcon} onPress={() => navigation.navigate('Profile')}>
           <Image source={require('./assets/Perfil.png')} style={styles.profileImage} />
