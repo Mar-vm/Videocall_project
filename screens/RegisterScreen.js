@@ -20,7 +20,7 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {/* Agregar el logo de LSM y el mensaje de bienvenida */}
-      <Image source={require('../assets/LogoLSM.png')} style={styles.logo} />
+      <Image source={require('../assets/Enlaza.png')} style={styles.logo} />
       <Text style={styles.welcomeText}>¡Bienvenido! Crea tu cuenta</Text>
       
       <Text style={styles.label}>Nombre</Text>

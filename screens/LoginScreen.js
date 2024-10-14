@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/LogoLSM.png')} style={styles.logo} />
+      <Image source={require('../assets/Enlaza.png')} style={styles.logo} />
       <Text style={styles.welcomeText}>Inicia Sesión</Text>
 
       <Text style={styles.label}>Correo</Text>
