@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen'; // Importa la pantalla de inicio de sesión
 import ProfileScreen from './screens/ProfileScreen'; // Importa la pantalla de perfil
 import RegisterScreen from './screens/RegisterScreen'; // Importa la pantalla de registro
-import CameraScreen from './screens/CameraScreen'; // Importa la pantalla de la cámara
+import CallScreen from './screens/VideoCallScreen'; // Importa la pantalla de la cámara
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons'; // Para los íconos
 import { AntDesign } from '@expo/vector-icons'; 
@@ -24,7 +24,7 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Iniciar Sesión' }} />
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ title: 'Perfil' }} />
         <Stack.Screen name="Register" component={RegisterScreen} options={{ title: 'Registrarse' }} />
-        <Stack.Screen name="Camera" component={CameraScreen} options={{ title: 'Cámara' }} />
+        <Stack.Screen name="Llamar" component={CallScreen} options={{ title: 'Llamada' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -57,7 +57,7 @@ const HomeScreen = ({ navigation }) => {
       {/* Contenido principal */}
       <View style={styles.content}>
         <Text style={styles.welcome}>enlaza</Text>
-        <TouchableOpacity style={styles.button} onPress={Llamar}>
+        <TouchableOpacity style={styles.button} onPress={iniciarCamara}>
           <Ionicons name="videocam" size={24} color="white" />
           <Text style={styles.buttonText}>Llamar</Text>
         </TouchableOpacity>
