@@ -7,8 +7,14 @@ import LoginScreen from './screens/LoginScreen'; // Importa la pantalla de inici
 import ProfileScreen from './screens/ProfileScreen'; // Importa la pantalla de perfil
 import RegisterScreen from './screens/RegisterScreen'; // Importa la pantalla de registro
 import CameraScreen from './screens/CameraScreen'; // Importa la pantalla de la cámara
+import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons'; // Para los íconos
+import { AntDesign } from '@expo/vector-icons'; 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createNativeStackNavigator();
+
+
 
 const App = () => {
   return (
@@ -26,7 +32,7 @@ const App = () => {
 
 const HomeScreen = ({ navigation }) => {
   const iniciarCamara = () => {
-    navigation.navigate('Camera'); // Navega a la pantalla de la cámara
+    navigation.navigate('Llamar'); // Navega a la pantalla de la cámara
   };
 
   const irALogin = () => {
@@ -39,60 +45,142 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      {/* Header con el logo y el perfil */}
       <View style={styles.header}>
-        <Image source={require('./assets/Enlaza.png')} style={styles.logo} />
+        <Image source={require('./assets/LogoLSM.png')} style={styles.logo} />
         <Text style={styles.headerText}>Traductor de LSM en videollamada</Text>
-        <TouchableOpacity style={styles.profileIcon} onPress={() => navigation.navigate('Profile')}>
-          <Image source={require('./assets/Perfil.png')} style={styles.profileImage} />
+        <TouchableOpacity style={styles.profileIcon} onPress={() => console.log('Perfil')}>
+          {/* Aquí puedes agregar un icono de perfil si lo deseas */}
         </TouchableOpacity>
       </View>
+
+      {/* Contenido principal */}
       <View style={styles.content}>
-        <Text style={styles.welcome}>¡Bienvenido a la aplicación de VideoCall!</Text>
-        <Text style={styles.instructions}>Próximamente podrás iniciar videollamadas aquí</Text>
-        <TouchableOpacity style={styles.button} onPress={iniciarCamara}>
-          <Text style={styles.buttonText}>Iniciar cámara</Text>
+        <Text style={styles.welcome}>enlaza</Text>
+        <TouchableOpacity style={styles.button} onPress={Llamar}>
+          <Ionicons name="videocam" size={24} color="white" />
+          <Text style={styles.buttonText}>Llamar</Text>
         </TouchableOpacity>
+
+
         <TouchableOpacity onPress={irALogin}>
           <Text style={styles.linkText}>Iniciar Sesión</Text>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={irARegistrar}>
           <Text style={styles.linkText}>Registrarse</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Footer */}
       <View style={styles.footer}>
-        <Text>© 2024 Traductor de LSM. Todos los derechos reservados a el profe.</Text>
+        <Text>© 2024 Traductor de LSM. Todos los derechos reservados al profe Garza.</Text>
       </View>
+
+      <StatusBar style="auto" />
     </View>
   );
 };
 
+// Componente para la pantalla de contactos
+const ContactosScreen = () => {
+  return (
+    <View style={styles.container}>
+      <Text>Pantalla de Contactos</Text>
+    </View>
+  );
+};
+const ProfileScreen = () => {
+  return (
+    <View style={styles.container}>
+      <Text>info de perfil</Text>
+    </View>
+  );
+};
+const SettingsScreen = () => {
+  return (
+    <View style={styles.container}>
+      <Text>ajustes</Text>
+    </View>
+  );
+};
+const QaaScreen = () => {
+  return (
+    <View style={styles.container}>
+      <Text>Preguntas y respuestas</Text>
+    </View>
+  );
+};
+
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen 
+          name="Inicio" 
+          component={HomeScreen} 
+          options={{ 
+            tabBarIcon: () => <Ionicons name="home" size={24} color="black" /> 
+          }} 
+        />
+        <Tab.Screen 
+          name="Contactos" 
+          component={ContactosScreen} 
+          options={{ 
+            tabBarIcon: () => <AntDesign name="team" size={24} color="black" /> 
+          }} 
+        />
+        <Tab.Screen 
+          name="Perfil" 
+          component={ProfileScreen}  
+          options={{ 
+            tabBarIcon: () => <AntDesign name="user" size={24} color="black" /> 
+          }} 
+        />
+        <Tab.Screen 
+          name="Ajustes" 
+          component={SettingsScreen} 
+          options={{ 
+            tabBarIcon: () => <AntDesign name="setting" size={24} color="black" /> 
+          }} 
+        />
+        <Tab.Screen 
+          name="Dudas" 
+          component={QaaScreen} 
+          options={{ 
+            tabBarIcon: () => <AntDesign name="question" size={24} color="black" /> 
+          }} 
+        />
+        {/* Agrega más pestañas según sea necesario */}
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
+
+
 const styles = StyleSheet.create({
-  container: {
+   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#f0f0f0',
+    padding: 20,
+    justifyContent: 'center',
   },
   header: {
-    width: '100%',
-    height: 120,
-    backgroundColor: '#007BFF',
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
-    position: 'absolute',
-    top: 0,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 3,
+    marginBottom: 40,
   },
   logo: {
     width: 50,
     height: 50,
-    marginRight: 8,
+    marginRight: 10,
+  },
+  headerText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
   },
   profileIcon: {
     position: 'absolute',
@@ -103,23 +191,16 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
-  headerText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    flex: 1,
-  },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 150,
   },
   welcome: {
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: 'bold',
-    color: '#00796B',
-    marginBottom: 20,
+    color: '#333',
+    marginBottom: 10,
   },
   instructions: {
     fontSize: 18,
@@ -127,26 +208,31 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#0056B3',
-    padding: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#007bff',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     borderRadius: 10,
-    marginVertical: 10,
+    marginBottom: 10,
+    width: '80%',
+    justifyContent: 'center',
   },
   buttonText: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    textAlign: 'center',
+    color: '#white',
+    fontSize: 18,
+    marginLeft: 10
   },
   linkText: {
     color: '#007BFF',
-    fontSize: 18,
-    marginVertical: 10,
+    fontSize: 16,
+    marginTop: 10,
   },
   footer: {
-    position: 'absolute',
-    bottom: 10,
-    width: '100%',
     alignItems: 'center',
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#ddd',
   },
 });
 
