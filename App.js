@@ -30,8 +30,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('./assets/LogoLSM.png')} style={styles.logo} />
-        <Text style={styles.headerText}>Traductor de LSM en videollamada</Text>
+        <Image source={require('./assets/Enlaza.png')} style={styles.logo} />
+        <Text style={styles.headerText}>LSM en videollamada</Text>
         <TouchableOpacity style={styles.profileIcon} onPress={() => console.log('Perfil')}>
           {/* Icono de perfil aquí */}
         </TouchableOpacity>
