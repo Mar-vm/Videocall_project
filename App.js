@@ -126,7 +126,7 @@ const App = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName="Tabs">
       <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
-      <Stack.Screen name="Llamar" component={VideoCallScreen} options={{ title: 'Llamada' }} />
+      <Stack.Screen name="Llamar" component={CallScreen} options={{ title: 'Llamada' }} />
       <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Iniciar Sesión' }} />
       <Stack.Screen name="Register" component={RegisterScreen} options={{ title: 'Registrarse' }} />
     </Stack.Navigator>
