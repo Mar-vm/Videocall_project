@@ -47,24 +47,19 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Footer */}
-      <View style={styles.footer}>
-        <Text>© 2024 Traductor de LSM. Todos los derechos reservados al profe Graza.</Text>
-      </View>
-
       <StatusBar style="auto" />
     </View>
   );
 };
 
-// Botón de navegación "< inicio"
+// Botón de navegación "<inicio"
 const BackButton = ({ navigation }) => (
   <TouchableOpacity onPress={() => navigation.navigate('Inicio')}>
     <Text style={styles.backButton}>{'< inicio'}</Text>
   </TouchableOpacity>
 );
 
-// Componente para mostrar la barra superior con el botón "< inicio" y el título de la pantalla
+// Muestra la barra superior con el botón "< inicio" y el título de la pantalla
 const ScreenHeader = ({ title, navigation }) => {
   return (
     <View style={styles.headerContainer}>
@@ -74,6 +69,7 @@ const ScreenHeader = ({ title, navigation }) => {
   );
 };
 
+///////////////////////////////////////////////////////
 // Componente para la pantalla de Contactos
 const ContactosScreen = () => {
   // Ejemplo de lista de contactos
@@ -111,7 +107,7 @@ const ContactosScreen = () => {
     </View>
   );
 };
-
+///////////////////////////////////////////
 const ProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -148,22 +144,21 @@ export default function App() {
             let iconName;
 
             if (route.name === 'Inicio') {
-              iconName = focused ? 'home' : 'home'; // Cambiado a un nombre válido
+              iconName = focused ? 'home' : 'home'; 
             } else if (route.name === 'Contactos') {
-              iconName = focused ? 'contacts' : 'contacts'; // Cambiado a un nombre válido
+              iconName = focused ? 'contacts' : 'contacts'; 
             } else if (route.name === 'Perfil') {
-              iconName = focused ? 'user' : 'user'; // Cambiado a un nombre válido
+              iconName = focused ? 'user' : 'user'
             } else if (route.name === 'Ajustes') {
-              iconName = focused ? 'setting' : 'setting'; // Cambiado a un nombre válido
+              iconName = focused ? 'setting' : 'setting'; 
             } else if (route.name === 'Dudas') {
-              iconName = focused ? 'questioncircle' : 'questioncircle'; // Cambiado a un nombre válido
+              iconName = focused ? 'questioncircle' : 'questioncircle'; 
             }
 
-            // Puedes usar cualquier ícono que prefieras aquí
             return <AntDesign name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'blue', // Cambiar color cuando esté activa
-          tabBarInactiveTintColor: 'gray', // Cambiar color cuando esté inactiva
+          tabBarActiveTintColor: 'blue', // Cambia de color cuando esté activa
+          tabBarInactiveTintColor: 'gray', // Cambia de color cuando esté inactiva
           headerShown: false, // Oculta el encabezado superior
         })}
       >
@@ -193,7 +188,7 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'absolute', // Coloca el header en la parte superior
     top: 0, // Asegura que se mantenga en la parte superior
-    zIndex: 1000, // Asegura que se muestre encima de otros elementos
+    zIndex: 1000, // Lo muestra encima de otros elementos
     justifyContent: 'space-between',
   },
   backButton: {
@@ -221,11 +216,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  content: {
+  content: { // Deja espacio para el header
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50, // Deja espacio para el header
+    paddingTop: 50, 
   },
   welcome: {
     fontSize: 24,
